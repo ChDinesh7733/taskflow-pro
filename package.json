@@ -1,0 +1,12 @@
+{
+  "name": "taskflow-pro-monorepo",
+  "version": "1.0.0",
+  "description": "TaskFlow Pro - Unified Full-Stack Spring Boot and React Vite Application",
+  "scripts": {
+    "build:ui": "npm --prefix task-management-ui run build",
+    "build": "npm run build:ui && mvn -f taskflow-api/pom.xml package -DskipTests",
+    "start": "mvn -f taskflow-api/pom.xml spring-boot:run",
+    "dev:ui": "npm --prefix task-management-ui run dev",
+    "dev:backend": "mvn -f taskflow-api/pom.xml spring-boot:run"
+  }
+}

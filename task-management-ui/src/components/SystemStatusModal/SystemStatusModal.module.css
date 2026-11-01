@@ -1,0 +1,367 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(6px);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.modal {
+  width: 100%;
+  max-width: 680px;
+  max-height: 90vh;
+  background: var(--surface, #ffffff);
+  border-radius: 16px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  border: 1px solid var(--border, #e2e8f0);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  color: var(--text, #0f172a);
+}
+
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 1.35rem 1.75rem 1.15rem;
+  border-bottom: 1px solid var(--border, #e2e8f0);
+  background: var(--surface-2, #f8fafc);
+}
+
+.headerTitle {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+}
+
+.iconWrap {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: rgba(99, 102, 241, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.titleBadgeRow {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.3rem;
+}
+
+.hubBadge {
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  color: #6366f1;
+  background: rgba(99, 102, 241, 0.1);
+  padding: 0.18rem 0.5rem;
+  border-radius: 6px;
+}
+
+.singleLinkPill {
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: #10b981;
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  padding: 0.18rem 0.5rem;
+  border-radius: 999px;
+}
+
+.headerTitle h3 {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.headerTitle p {
+  margin: 0.25rem 0 0;
+  font-size: 0.82rem;
+  color: var(--text-muted, #64748b);
+}
+
+.closeBtn {
+  background: none;
+  border: none;
+  color: var(--text-muted, #94a3b8);
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s;
+}
+
+.closeBtn:hover {
+  background: var(--surface, #ffffff);
+  color: var(--text, #0f172a);
+}
+
+/* Diagnostics bar */
+.diagnosticsBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.65rem 1.75rem;
+  background: var(--surface-2, #f1f5f9);
+  border-bottom: 1px solid var(--border, #e2e8f0);
+  font-size: 0.78rem;
+  gap: 1rem;
+}
+
+.diagItem {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.diagLabel {
+  color: var(--text-muted, #64748b);
+  font-weight: 500;
+}
+
+.diagValue {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-weight: 600;
+  color: var(--text, #0f172a);
+}
+
+.greenDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: #10b981;
+}
+
+.yellowDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: #f59e0b;
+}
+
+/* Body */
+.body {
+  padding: 1.25rem 1.75rem;
+  overflow-y: auto;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.linksHeadingRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.15rem;
+}
+
+.sectionTitle {
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: var(--text-muted, #64748b);
+  letter-spacing: 0.05em;
+}
+
+.sectionSubtitle {
+  font-size: 0.72rem;
+  font-family: monospace;
+  color: var(--text-muted, #94a3b8);
+}
+
+.servicesList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.serviceCard {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.9rem 1.15rem;
+  background: var(--surface-2, #f8fafc);
+  border: 1px solid var(--border, #e2e8f0);
+  border-radius: 12px;
+  transition: all 0.15s ease;
+}
+
+.serviceCard:hover {
+  background: var(--surface, #ffffff);
+  border-color: #cbd5e1;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.serviceIconWrap {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.serviceInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.serviceHeaderRow {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.serviceName {
+  margin: 0;
+  font-size: 0.92rem;
+  font-weight: 700;
+}
+
+.serviceBadge {
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 0.15rem 0.45rem;
+  border-radius: 6px;
+}
+
+.serviceDesc {
+  margin: 0.2rem 0 0.35rem;
+  font-size: 0.78rem;
+  color: var(--text-muted, #64748b);
+  line-height: 1.35;
+}
+
+.serviceUrlRow {
+  display: flex;
+  align-items: center;
+}
+
+.serviceUrl {
+  font-size: 0.72rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  color: #4f46e5;
+  background: rgba(99, 102, 241, 0.08);
+  padding: 0.15rem 0.45rem;
+  border-radius: 4px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 100%;
+}
+
+.serviceActions {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.copyBtn {
+  background: var(--surface, #ffffff);
+  border: 1px solid var(--border, #cbd5e1);
+  color: var(--text-muted, #64748b);
+  padding: 0.45rem;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s;
+}
+
+.copyBtn:hover {
+  background: var(--surface-2, #f1f5f9);
+  color: var(--text, #0f172a);
+}
+
+.openBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.45rem 0.85rem;
+  border-radius: 8px;
+  border: 1px solid #6366f1;
+  background: #6366f1;
+  color: #ffffff;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.15s;
+  white-space: nowrap;
+}
+
+.openBtn:hover {
+  background: #4f46e5;
+}
+
+/* Footer */
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.75rem;
+  border-top: 1px solid var(--border, #e2e8f0);
+  background: var(--surface-2, #f8fafc);
+}
+
+.refreshBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: transparent;
+  border: 1px solid var(--border, #cbd5e1);
+  padding: 0.45rem 0.85rem;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-muted, #475569);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.refreshBtn:hover {
+  background: var(--surface, #ffffff);
+  color: var(--text, #0f172a);
+}
+
+.spin {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.doneBtn {
+  padding: 0.5rem 1.25rem;
+  border-radius: 8px;
+  border: none;
+  background: #0f172a;
+  color: #ffffff;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.doneBtn:hover {
+  background: #1e293b;
+}

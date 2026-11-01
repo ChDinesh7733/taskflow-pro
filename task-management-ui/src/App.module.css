@@ -1,0 +1,126 @@
+/* App Layout */
+.layout {
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+}
+
+.sidebar {
+  width: var(--sidebar-w);
+  flex-shrink: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 200;
+  overflow-y: auto;
+  transition: width 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.sidebarCollapsed .sidebar {
+  width: 68px;
+}
+
+.main {
+  flex: 1;
+  margin-left: var(--sidebar-w);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: calc(100% - var(--sidebar-w));
+  transition: margin-left 0.22s cubic-bezier(0.4, 0, 0.2, 1), width 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.sidebarCollapsed .main {
+  margin-left: 68px;
+  width: calc(100% - 68px);
+}
+
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  height: var(--topbar-h);
+  width: 100%;
+}
+
+.content {
+  flex: 1;
+  padding: 1.5rem 2rem 2.5rem;
+  max-width: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0;
+}
+
+/* Mobile overlay */
+.mobileOverlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 150;
+}
+
+.mobileMenuBtn {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  color: var(--text-secondary);
+  transition: all var(--ease);
+}
+.mobileMenuBtn:hover { background: var(--surface-2); }
+
+@media (max-width: 768px) {
+  .sidebar {
+    transform: translateX(-100%);
+    transition: transform var(--ease-md);
+  }
+  .sidebarOpen .sidebar {
+    transform: translateX(0);
+  }
+  .sidebarOpen .mobileOverlay {
+    display: block;
+  }
+  .main {
+    margin-left: 0;
+  }
+  .mobileMenuBtn {
+    display: flex;
+  }
+  .content {
+    padding: 1.25rem 1rem;
+  }
+}
+
+/* AI Breakdown bar */
+.aiBreakdownBar {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 0 12px;
+}
+
+.aiBtn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 18px;
+  background: linear-gradient(135deg, #7c3aed, #4f46e5);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.2s;
+}
+
+.aiBtn:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}

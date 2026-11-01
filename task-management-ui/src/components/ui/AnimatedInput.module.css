@@ -1,0 +1,100 @@
+/* ── AnimatedInput ── */
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #374151;
+  letter-spacing: 0.01em;
+}
+
+.wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 9px;
+  background: #f8fafc;
+  transition: border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.focused .wrap,
+.wrap:focus-within {
+  border-color: #6366f1;
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(99,102,241,0.12);
+}
+
+.hasError .wrap {
+  border-color: #f87171 !important;
+  background: #fff5f5 !important;
+  box-shadow: 0 0 0 3px rgba(248,113,113,0.1) !important;
+}
+
+.icon {
+  position: absolute;
+  left: 0.8rem;
+  color: #94a3b8;
+  pointer-events: none;
+  flex-shrink: 0;
+  transition: color 0.2s ease;
+}
+
+.focused .icon { color: #6366f1; }
+
+.input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  padding: 0.65rem 0.75rem 0.65rem 2.4rem;
+  font-family: inherit;
+  font-size: 0.9rem;
+  color: #0f172a;
+  outline: none;
+  border-radius: 9px;
+  width: 100%;
+}
+
+.input:disabled { opacity: 0.55; cursor: not-allowed; }
+.input::placeholder { color: #94a3b8; }
+
+/* No left icon — remove padding */
+.wrap:not(:has(.icon)) .input {
+  padding-left: 0.75rem;
+}
+
+.right {
+  display: flex;
+  align-items: center;
+  padding-right: 0.5rem;
+  flex-shrink: 0;
+}
+
+/* Animated underline focus bar */
+.focusBar {
+  position: absolute;
+  bottom: -1px;
+  left: 10%;
+  right: 10%;
+  height: 2px;
+  background: linear-gradient(90deg, #4f46e5, #818cf8);
+  border-radius: 2px;
+  transform-origin: center;
+  pointer-events: none;
+}
+
+.error {
+  font-size: 0.78rem;
+  color: #ef4444;
+  margin: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .focusBar { display: none; }
+  .wrap { transition: none; }
+}

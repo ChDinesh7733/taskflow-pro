@@ -1,0 +1,22 @@
+{
+  "name": "TaskFlow Pro (Java 17 + Node 20 + MySQL)",
+  "dockerComposeFile": "../docker-compose.yml",
+  "service": "backend",
+  "workspaceFolder": "/app",
+  "forwardPorts": [8081, 3306],
+  "portsAttributes": {
+    "8081": {
+      "label": "TaskFlow Pro (Frontend + Backend)",
+      "onAutoForward": "openBrowser"
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "vscjava.vscode-java-pack",
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode"
+      ]
+    }
+  }
+}

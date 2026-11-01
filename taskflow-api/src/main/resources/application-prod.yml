@@ -1,0 +1,42 @@
+# ============================================================
+# application-prod.yml  — overrides applied when SPRING_PROFILES_ACTIVE=prod
+# ============================================================
+
+spring:
+  # Full JDBC URL from Aiven (overrides host/port/name from base config)
+  datasource:
+    url: ${DB_URL}          # jdbc:mysql://host:port/dbname?sslMode=REQUIRED&...
+    username: ${DB_USER}
+    password: ${DB_PASSWORD}
+    hikari:
+      maximum-pool-size: 3  # Keep low on free-tier (512 MB RAM)
+      minimum-idle: 1
+      connection-timeout: 30000
+      idle-timeout: 300000
+
+  jpa:
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: false
+
+  flyway:
+    enabled: true
+    validate-on-migrate: true
+
+# Tighten logging in production
+logging:
+  level:
+    root: WARN
+    com.taskflow: INFO
+    org.flywaydb: INFO
+    org.springframework.web: WARN
+    org.springframework.security: WARN
+
+# Server — Render injects $PORT automatically
+server:
+  port: ${PORT:8081}
+  compression:
+    enabled: true
+    mime-types: application/json,application/xml,text/html,text/xml,text/plain
+    min-response-size: 1024

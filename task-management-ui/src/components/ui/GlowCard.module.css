@@ -1,0 +1,63 @@
+/* ── GlowCard ── */
+
+.card {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border-radius: var(--r-xl, 16px);
+  background: var(--surface, #fff);
+  border: 1px solid var(--border, #e2e8f0);
+  box-shadow: var(--shadow-sm);
+  cursor: default;
+  transition: box-shadow 0.25s ease, border-color 0.25s ease;
+  --glow-x: 50%;
+  --glow-y: 50%;
+}
+
+/* Pointer-following radial reflection */
+.reflection {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: radial-gradient(
+    160px circle at var(--glow-x) var(--glow-y),
+    rgba(99, 102, 241, 0.07) 0%,
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: inherit;
+}
+
+.card:hover .reflection {
+  opacity: 1;
+}
+
+/* Glowing border overlay */
+.border {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  background: transparent;
+  transition: box-shadow 0.3s ease;
+}
+
+.card:hover {
+  border-color: rgba(99, 102, 241, 0.3);
+  box-shadow: var(--shadow-md), 0 0 0 1px rgba(99,102,241,0.1),
+              0 0 20px rgba(99,102,241,0.08);
+}
+
+/* Children must be above the overlays */
+.card > *:not(.reflection):not(.border) {
+  position: relative;
+  z-index: 2;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card { transition: none; }
+  .reflection { display: none; }
+}

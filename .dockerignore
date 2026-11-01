@@ -1,0 +1,13 @@
+**/.git
+**/.gitignore
+**/.vscode
+**/.idea
+**/node_modules
+**/dist
+**/target
+**/*.log
+**/.system_generated
+**/.user_uploaded
+**/brain
+**/*.tmp
+**/npm-debug.log*

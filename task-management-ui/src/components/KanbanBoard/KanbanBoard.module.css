@@ -1,0 +1,221 @@
+.kanbanContainer {
+  display: flex;
+  gap: 1.25rem;
+  overflow-x: auto;
+  padding-bottom: 1.5rem;
+  align-items: flex-start;
+  min-height: 520px;
+  width: 100%;
+}
+
+.column {
+  flex: 1 1 0;
+  min-width: 270px;
+  background: var(--surface-2, #f8fafc);
+  border-radius: 12px;
+  border: 1px solid var(--border, #e2e8f0);
+  display: flex;
+  flex-direction: column;
+  max-height: calc(100vh - 280px);
+  transition: all 0.2s ease;
+}
+
+.columnDragOver {
+  background: rgba(99, 102, 241, 0.1);
+  border-color: #6366f1;
+  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
+}
+
+.columnHeader {
+  padding: 0.9rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border, #e2e8f0);
+  background: var(--surface, #ffffff);
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
+
+.headerLeft {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.statusDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.columnTitle {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--text-primary, #1e293b);
+}
+
+.countBadge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.15rem 0.5rem;
+  border-radius: 9999px;
+  background: var(--surface-2, #f1f5f9);
+  color: var(--text-secondary, #64748b);
+  border: 1px solid var(--border, #e2e8f0);
+}
+
+.addBtn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--text-muted, #64748b);
+  padding: 0.3rem;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s;
+}
+
+.addBtn:hover {
+  background: var(--surface-2, #f1f5f9);
+  color: var(--brand, #4f46e5);
+}
+
+.cardsList {
+  padding: 0.75rem;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  flex: 1;
+  min-height: 140px;
+}
+
+.cardItem {
+  background: var(--surface, #ffffff);
+  border-radius: 10px;
+  border: 1px solid var(--border, #e2e8f0);
+  padding: 0.85rem;
+  cursor: grab;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.cardItem:hover {
+  border-color: var(--brand, #6366f1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transform: translateY(-2px);
+}
+
+.cardDragging {
+  opacity: 0.4;
+  border: 1px dashed #6366f1;
+}
+
+.cardTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.priorityBadge {
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.15rem 0.45rem;
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.cardActions {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.actionBtn {
+  background: transparent;
+  border: none;
+  color: var(--text-muted, #94a3b8);
+  cursor: pointer;
+  padding: 0.25rem;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  transition: all 0.15s;
+}
+
+.actionBtn:hover {
+  color: #4f46e5;
+  background: var(--surface-2, #eef2ff);
+}
+
+.cardTitle {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-primary, #0f172a);
+  line-height: 1.35;
+}
+
+.cardDesc {
+  font-size: 0.78rem;
+  color: var(--text-secondary, #64748b);
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.tagsRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+}
+
+.tagPill {
+  font-size: 0.68rem;
+  font-weight: 600;
+  background: rgba(99, 102, 241, 0.15);
+  color: var(--brand, #4338ca);
+  padding: 0.1rem 0.4rem;
+  border-radius: 9999px;
+}
+
+.cardFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 0.4rem;
+  border-top: 1px solid var(--border, #f1f5f9);
+  font-size: 0.72rem;
+  color: var(--text-muted, #64748b);
+}
+
+.cardMeta {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.emptyColumn {
+  padding: 2rem 1rem;
+  text-align: center;
+  color: var(--text-muted, #94a3b8);
+  font-size: 0.8rem;
+  border: 1px dashed var(--border, #cbd5e1);
+  border-radius: 8px;
+  margin: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  background: var(--surface, #f8fafc);
+}

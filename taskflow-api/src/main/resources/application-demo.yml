@@ -1,0 +1,10 @@
+# Demo profile — activates DemoDataSeeder (profile "demo")
+# No extra datasource config needed; inherits all values from application.yml.
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: none
+
+logging:
+  level:
+    com.taskflow.seeder: INFO

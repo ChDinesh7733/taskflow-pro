@@ -1,0 +1,146 @@
+/* ── GlowButton ── */
+
+.btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.55rem 1.1rem;
+  border: none;
+  border-radius: var(--r-lg, 12px);
+  font-family: var(--font, 'Inter', sans-serif);
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  overflow: hidden;
+  outline: none;
+  isolation: isolate;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  --btn-x: 50%;
+  --btn-y: 50%;
+  transition: box-shadow 0.25s ease, opacity 0.2s ease;
+}
+
+.btn:focus-visible {
+  outline: 2px solid #6366f1;
+  outline-offset: 2px;
+}
+
+/* ── Inner content (above shimmer) ── */
+.inner {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+/* ── Shimmer — follows pointer ── */
+.shimmer {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: radial-gradient(
+    80px circle at var(--btn-x) var(--btn-y),
+    rgba(255,255,255,0.22) 0%,
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+.btn:hover .shimmer { opacity: 1; }
+
+/* ── Outer glow ── */
+.glow {
+  position: absolute;
+  inset: -2px;
+  z-index: 0;
+  border-radius: calc(var(--r-lg, 12px) + 2px);
+  background: transparent;
+  transition: background 0.3s ease;
+  pointer-events: none;
+}
+
+/* ── Variants ── */
+
+/* Primary */
+.primary {
+  background: linear-gradient(135deg, #4f46e5 0%, #6366f1 50%, #818cf8 100%);
+  background-size: 200% 200%;
+  background-position: 0% 0%;
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(79,70,229,0.35);
+  animation: gradientShift 4s ease infinite alternate;
+}
+
+.primary:hover {
+  box-shadow: 0 6px 20px rgba(79,70,229,0.55), 0 0 0 1px rgba(99,102,241,0.4);
+}
+
+.primary:hover .glow {
+  background: radial-gradient(ellipse at center, rgba(99,102,241,0.25) 0%, transparent 70%);
+}
+
+/* Secondary */
+.secondary {
+  background: #fff;
+  color: #1e1b4b;
+  border: 1.5px solid #e2e8f0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+}
+
+.secondary:hover {
+  background: #f5f3ff;
+  border-color: #c7d2fe;
+  box-shadow: 0 4px 12px rgba(79,70,229,0.12);
+  color: #4f46e5;
+}
+
+/* Danger */
+.danger {
+  background: linear-gradient(135deg, #dc2626, #ef4444);
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(220,38,38,0.3);
+}
+
+.danger:hover {
+  box-shadow: 0 6px 20px rgba(220,38,38,0.45);
+}
+
+/* Ghost */
+.ghost {
+  background: transparent;
+  color: #64748b;
+  border: 1.5px solid transparent;
+}
+
+.ghost:hover {
+  background: #f1f5f9;
+  color: #1e293b;
+  border-color: #e2e8f0;
+}
+
+/* ── Disabled / loading ── */
+.btn:disabled,
+.loading {
+  opacity: 0.62;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* ── Gradient animation ── */
+@keyframes gradientShift {
+  0%   { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
+/* ── Reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+  .btn { animation: none !important; }
+  .shimmer, .glow { display: none; }
+}

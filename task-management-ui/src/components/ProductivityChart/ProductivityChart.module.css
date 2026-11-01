@@ -1,0 +1,113 @@
+.card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 1.25rem 1.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  margin-bottom: 1.25rem;
+  transition: all 0.2s ease;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+}
+
+.header h3 {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.streak {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #d97706;
+  background: #fef3c7;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.metrics {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.metric { text-align: center; }
+
+.gaugeWrap {
+  position: relative;
+  width: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gauge { width: 90px; display: block; }
+
+.gaugeLabel {
+  position: absolute;
+  bottom: 2px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.metricTitle {
+  margin: 4px 0 0;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #64748b;
+}
+
+.metricGroup {
+  flex: 1;
+  display: flex;
+  gap: 1.5rem;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.stat { text-align: center; }
+
+.statVal {
+  display: block;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #0f172a;
+  line-height: 1;
+}
+
+.statLabel {
+  font-size: 0.72rem;
+  color: #64748b;
+  margin-top: 4px;
+  display: block;
+  font-weight: 600;
+}
+
+.chartWrap {
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid #f1f5f9;
+}
+
+.loading {
+  color: #64748b;
+  font-size: 0.85rem;
+  text-align: center;
+  padding: 1.5rem;
+}
+
+.chartWrap { margin-top: 8px; }
+
+.loading { color: #64748b; font-size: 0.85rem; padding: 16px; }

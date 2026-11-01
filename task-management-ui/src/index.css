@@ -1,0 +1,160 @@
+/* ============================================================
+   Global Styles & Design Tokens — Task Management System
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  /* Brand */
+  --brand:        #4f46e5;
+  --brand-dark:   #3730a3;
+  --brand-light:  #eef2ff;
+  --brand-mid:    #6366f1;
+
+  /* Surface */
+  --bg:           #f8fafc;
+  --surface:      #ffffff;
+  --surface-2:    #f1f5f9;
+  --sidebar-bg:   #1e1b4b;
+  --sidebar-text: #c7d2fe;
+  --sidebar-act:  #ffffff;
+
+  /* Text */
+  --text-primary:   #0f172a;
+  --text-secondary: #475569;
+  --text-muted:     #94a3b8;
+  --text-disabled:  #cbd5e1;
+
+  /* Border */
+  --border:         #e2e8f0;
+  --border-focus:   #4f46e5;
+
+  /* Status */
+  --pending:       #d97706;
+  --pending-bg:    #fef3c7;
+  --pending-ring:  #fbbf24;
+  --progress:      #2563eb;
+  --progress-bg:   #dbeafe;
+  --progress-ring: #60a5fa;
+  --done:          #059669;
+  --done-bg:       #d1fae5;
+  --done-ring:     #34d399;
+
+  /* Danger */
+  --danger:        #dc2626;
+  --danger-bg:     #fee2e2;
+  --danger-hover:  #b91c1c;
+
+  /* Shadows */
+  --shadow-xs:   0 1px 2px 0 rgb(0 0 0/0.05);
+  --shadow-sm:   0 1px 3px 0 rgb(0 0 0/0.10), 0 1px 2px -1px rgb(0 0 0/0.10);
+  --shadow-md:   0 4px 6px -1px rgb(0 0 0/0.10), 0 2px 4px -2px rgb(0 0 0/0.10);
+  --shadow-lg:   0 10px 15px -3px rgb(0 0 0/0.10), 0 4px 6px -4px rgb(0 0 0/0.10);
+  --shadow-xl:   0 20px 25px -5px rgb(0 0 0/0.10), 0 8px 10px -6px rgb(0 0 0/0.10);
+
+  /* Radius */
+  --r-xs:  4px;
+  --r-sm:  6px;
+  --r-md:  8px;
+  --r-lg:  12px;
+  --r-xl:  16px;
+  --r-2xl: 24px;
+  --r-full: 9999px;
+
+  /* Typography */
+  --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  /* Transition */
+  --ease: 0.15s ease;
+  --ease-md: 0.2s ease;
+
+  /* Layout */
+  --sidebar-w: 240px;
+  --topbar-h:  64px;
+}
+
+[data-theme="dark"] {
+  --bg:           #0b0f19;
+  --surface:      #111827;
+  --surface-2:    #1f2937;
+  --sidebar-bg:   #090d16;
+  --sidebar-text: #94a3b8;
+  --sidebar-act:  #ffffff;
+
+  --text-primary:   #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-muted:     #64748b;
+  --text-disabled:  #475569;
+
+  --border:         #1f2937;
+  --border-focus:   #6366f1;
+
+  --pending-bg:     rgba(217, 119, 6, 0.2);
+  --progress-bg:    rgba(37, 99, 235, 0.2);
+  --done-bg:        rgba(5, 150, 105, 0.2);
+  --danger-bg:      rgba(220, 38, 38, 0.2);
+}
+
+html { font-size: 16px; }
+
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text-primary);
+  line-height: 1.6;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+button { font-family: var(--font); cursor: pointer; }
+input, textarea, select { font-family: var(--font); }
+a { text-decoration: none; color: inherit; }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 99px; }
+::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+/* Focus ring */
+*:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
+  border-radius: var(--r-sm);
+}
+
+/* -- Page ambient glow (follows cursor via JS --cursor-x/y vars) -- */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    700px circle at var(--cursor-x, 50%) var(--cursor-y, 20%),
+    rgba(99, 102, 241, 0.04) 0%,
+    transparent 60%
+  );
+}
+
+/* -- Smooth focus rings everywhere -- */
+:focus-visible {
+  outline: 2px solid #6366f1;
+  outline-offset: 2px;
+}
+
+/* -- Reduced motion global -- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

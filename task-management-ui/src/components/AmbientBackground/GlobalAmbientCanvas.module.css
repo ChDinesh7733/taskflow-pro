@@ -1,0 +1,53 @@
+.ambientWrap {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.auroraGlow1 {
+  position: absolute;
+  top: -20%;
+  left: -10%;
+  width: 60vw;
+  height: 60vh;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(168, 85, 247, 0.15) 0%, rgba(99, 102, 241, 0.05) 50%, transparent 70%);
+  filter: blur(60px);
+  animation: auroraFloat1 20s ease-in-out infinite alternate;
+}
+
+.auroraGlow2 {
+  position: absolute;
+  bottom: -20%;
+  right: -10%;
+  width: 65vw;
+  height: 65vh;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.12) 0%, rgba(124, 58, 237, 0.06) 50%, transparent 70%);
+  filter: blur(70px);
+  animation: auroraFloat2 25s ease-in-out infinite alternate;
+}
+
+@keyframes auroraFloat1 {
+  0%   { transform: translate(0, 0) scale(1); }
+  50%  { transform: translate(6vw, 8vh) scale(1.15); }
+  100% { transform: translate(-4vw, 4vh) scale(0.95); }
+}
+
+@keyframes auroraFloat2 {
+  0%   { transform: translate(0, 0) scale(1); }
+  50%  { transform: translate(-8vw, -6vh) scale(1.1); }
+  100% { transform: translate(5vw, -3vh) scale(0.9); }
+}
