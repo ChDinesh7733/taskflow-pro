@@ -4,9 +4,8 @@
 spring:
   datasource:
     driver-class-name: org.h2.Driver
-    # If DB_URL is supplied (e.g. cloud MySQL from Aiven/TiDB), use it;
-    # otherwise fallback to embedded H2 file database in /tmp
-    url: ${DB_URL:jdbc:h2:file:/tmp/taskflow_db;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;MODE=MySQL}
+    # Embedded H2 file database persisted in /tmp/taskflow_db
+    url: ${DB_URL:jdbc:h2:file:/tmp/taskflow_db;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;MODE=MySQL;DATABASE_TO_LOWER=TRUE;DEFAULT_NULL_ORDERING=HIGH;NON_KEYWORDS=USER}
     username: ${DB_USER:sa}
     password: ${DB_PASSWORD:}
     hikari:
@@ -16,8 +15,12 @@ spring:
 
   jpa:
     hibernate:
-      ddl-auto: ${DDL_AUTO:update}
+      ddl-auto: update
     show-sql: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+        format_sql: false
 
   flyway:
     enabled: ${FLYWAY_ENABLED:false}
@@ -27,5 +30,5 @@ server:
 
 logging:
   level:
-    root: WARN
-    com.taskflow: INFO
+    root: INFO
+    com.taskflow: DEBUG

@@ -49,16 +49,24 @@ public class AuthServiceImpl implements AuthService {
             throw new EmailAlreadyExistsException(email);
         }
 
+        LocalDateTime now = LocalDateTime.now();
         User user = User.builder()
             .email(email)
             .displayName(req.displayName().trim())
             .passwordHash(passwordEncoder.encode(req.password()))
+            .role(com.taskflow.enums.UserRole.USER)
+            .enabled(true)
+            .emailDigestEnabled(true)
+            .planTier("FREE")
+            .xp(0)
+            .level(1)
+            .currentStreak(0)
+            .longestStreak(0)
+            .createdAt(now)
+            .updatedAt(now)
             .build();
 
-        userRepository.save(user);
-        // Re-fetch so @CreationTimestamp is populated from DB
-        User saved = userRepository.findByEmail(email)
-            .orElseThrow(() -> new ResourceNotFoundException("User not found after save"));
+        User saved = userRepository.save(user);
         log.info("Registered new user: {}", saved.getEmail());
         return UserResponse.from(saved);
     }

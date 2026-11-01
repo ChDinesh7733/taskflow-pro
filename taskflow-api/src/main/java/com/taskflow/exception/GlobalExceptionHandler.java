@@ -140,8 +140,22 @@ public class GlobalExceptionHandler {
     public ResponseEntity<Map<String, Object>> handleDataIntegrity(
         org.springframework.dao.DataIntegrityViolationException ex, HttpServletRequest req) {
 
+        log.error("Data integrity violation: {}", ex.getMessage());
         return ResponseEntity.status(HttpStatus.CONFLICT).body(body(
             409, "Conflict", "Data integrity constraint violated", req));
+    }
+
+    /* ── Database / Persistence Failure (500) ── */
+    @ExceptionHandler({org.springframework.dao.DataAccessException.class, jakarta.persistence.PersistenceException.class})
+    public ResponseEntity<Map<String, Object>> handleDatabaseException(
+        Exception ex, HttpServletRequest req) {
+
+        log.error("Database error [{}]: {}", ex.getClass().getSimpleName(), ex.getMessage(), ex);
+        String msg = (ex.getCause() != null && ex.getCause().getMessage() != null)
+            ? ex.getCause().getMessage()
+            : (ex.getMessage() != null ? ex.getMessage() : "Database operation failed");
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(body(
+            500, "Database Error", msg, req));
     }
 
     /* ── Catch-all (never expose internals) ── */
@@ -150,8 +164,9 @@ public class GlobalExceptionHandler {
         Exception ex, HttpServletRequest req) {
 
         log.error("Unhandled exception [{}]: {}", ex.getClass().getSimpleName(), ex.getMessage(), ex);
+        String msg = (ex.getMessage() != null && !ex.getMessage().isBlank()) ? ex.getMessage() : "An unexpected error occurred";
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(body(
-            500, "Internal Server Error", "An unexpected error occurred", req));
+            500, "Internal Server Error", msg, req));
     }
 
     /* ── Helper ── */

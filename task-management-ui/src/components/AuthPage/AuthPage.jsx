@@ -143,9 +143,18 @@ const AuthPage = ({ initialMode = 'login', onBackToLanding = null, onDemoLogin =
         ]);
       } else {
         await register(displayName.trim(), email.trim().toLowerCase(), password);
-        setSuccess('Account created! Signing you in…');
-        switchMode('login');
-        setEmail(email.trim().toLowerCase());
+        try {
+          setIsShattering(true);
+          await Promise.all([
+            login(email.trim().toLowerCase(), password),
+            new Promise(r => setTimeout(r, 1100))
+          ]);
+        } catch {
+          setIsShattering(false);
+          setMode('login');
+          setSuccess('Account created successfully! Please sign in with your password.');
+          setEmail(email.trim().toLowerCase());
+        }
       }
     } catch (err) {
       setIsShattering(false);
