@@ -56,6 +56,7 @@ services:
       MAIL_PASSWORD: ${MAIL_PASSWORD:-}
       # Server & CORS
       PORT: 8081
+      SPRING_PROFILES_ACTIVE: default
       CORS_ALLOWED_ORIGINS: ${CORS_ALLOWED_ORIGINS:-http://localhost:8081,http://localhost:5173,http://localhost:3000}
     ports:
       - "8081:8081"

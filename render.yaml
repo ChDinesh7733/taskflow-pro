@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: taskflow-pro
+    runtime: docker
+    plan: free
+    healthCheckPath: /actuator/health
+    envVars:
+      - key: PORT
+        value: 8081
+      - key: SPRING_PROFILES_ACTIVE
+        value: render

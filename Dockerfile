@@ -32,6 +32,7 @@ USER taskflow
 
 COPY --from=backend-builder /build/target/*.jar app.jar
 
+ENV SPRING_PROFILES_ACTIVE=render
 EXPOSE 8081
 
 HEALTHCHECK --interval=30s --timeout=5s --start-period=60s --retries=3 \
