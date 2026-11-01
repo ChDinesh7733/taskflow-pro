@@ -330,7 +330,7 @@ const AuthPage = ({ initialMode = 'login', onBackToLanding = null, onDemoLogin =
                     id="displayName"
                     label="Full Name"
                     type="text"
-                    placeholder="Dineshbabu"
+                    placeholder="Enter your Name"
                     value={displayName}
                     onChange={e => { setDisplayName(e.target.value); setErrors(p => ({...p, displayName: ''})); }}
                     autoFocus={mode === 'register'}
